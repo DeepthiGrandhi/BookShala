@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>BookShala</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css">
+        <script type="text/javascript" src="bootstrap/js/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+        <link href="home.css" rel="stylesheet" type="text/css"/> 
+       
+    </head>
+    <body>
+        <?php
+            $con=mysqli_connect("localhost","root","","stp") or die("error" . mysqli_error($con));
+            session_start();
+            if(!isset($_SESSION["email"])){
+            header("Location: index.php");
+            exit(); }
+        ?>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>                        
+                    </button> 			
+					<a href="index.php" class="navbar-brand"><img src="bookshala.jpg" alt="Book-shala">
+					</a>
+                </div>
+                <div>
+                    <div class="collapse navbar-collapse" id="myNavbar">
+                        <ul class="nav navbar-nav navbar-right">  
+							<li><a href="1.html"><b>Home</b></a></li>                           
+                            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><b>Courses</b><span class="caret"></span></a>
+							<ul class="dropdown-menu">
+                            <li><a href="#">M.Tech</a></li>
+                            <li><a href="#">B.Tech</a></li>
+                           	<li><a href="#">Inter</a></li>
+                            <li><a href="#">10th class</a></li>
+							</ul>
+							</li>
+							<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><b>Books</b><span class="caret"></span></a>
+							<ul class="dropdown-menu">
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                           	<li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+							</ul>
+							</li>
+							<li><a href="settings.php"><span class="glyphicon glyphicon-cog"></span>Settings</a></li>
+                            <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+                        </ul>
+						<ul class="nav navbar-nav navbar-left" id="navbar1">
+						<li><a href="1.html"><b>BOOK-SHAALA</b></a></li>
+						</ul>
+                    </div>   
+                </div>
+                
+            </div>
+        </nav>
+        <div id="bannerimage">            
+                <img class="images" src="1.jpeg"style="width:100%">
+                <img class="images" src="2.jpg"  style="width:100%">
+                <img class="images" src="2.jpg" style="width:100%">            
+        </div>
+        <div id="footer">
+            <div class="container">
+                <p><center>Copyright © Bookshala. All Rights
+                    Reserved | Contact Us: +91 90000 00000</center></p>
+            </div>
+        </div>
+    </body>
+    <script>
+
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("images");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1;}
+    x[myIndex-1].style.display = "block";
+    setTimeout(carousel, 3000);
+}
+</script>
+
+</html>

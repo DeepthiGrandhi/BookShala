@@ -1,0 +1,61 @@
+#banner_image{
+    padding-top: 75px;
+    padding-bottom: 50px;
+    text-align: center;
+    color: #f8f8f8;
+    background: url(img/bg.jpg) no-repeat center center;
+    background-size: cover;
+}
+.selector{
+    width: 100%;
+    height:50%;
+    background: rgba(0,0,0,.8);
+    border-top: 1px solid rgba(255,255,255,.2);
+    border-bottom:  1px solid rgba(255,255,255,.2);
+    display: flex;
+}
+
+#footer{    
+	position:fixed;
+    padding:10px 0;
+    background-color:black;
+    color:#9d9d9d;
+    bottom: 0;
+    width: 100%;
+}
+
+.panel-footer{
+    color: black;
+}
+.navbar {
+  min-height: 85px;
+}
+
+.navbar-brand {
+  padding: 0 15px;
+  height: 80px;
+  line-height: 80px;
+}
+
+.navbar-toggle {
+  /* (80px - button height 34px) / 2 = 23px */
+  margin-top: 23px;
+  padding: 9px 10px !important;
+}
+
+@media (min-width: 768px) {
+  .navbar-nav > li > a {
+    /* (80px - line-height of 27px) / 2 = 26.5px */
+    padding-top: 26.5px;
+    padding-bottom: 26.5px;
+    line-height: 27px;
+  }
+}
+#myNavbar{
+font-style: italic;
+font-size: 20px;
+}
+#navbar1{
+font-style: italic;
+font-size: 25px;
+}
