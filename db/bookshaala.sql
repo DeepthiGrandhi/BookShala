@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 06, 2019 at 08:08 PM
+-- Generation Time: Jul 06, 2019 at 09:49 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -21,6 +21,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `bookshaala`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `my_books`
+--
+
+CREATE TABLE `my_books` (
+  `id` int(11) NOT NULL,
+  `book_name` text NOT NULL,
+  `author` text NOT NULL,
+  `subject` text NOT NULL,
+  `cover` text NOT NULL,
+  `owned_by` int(11) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `my_books`
+--
+
+INSERT INTO `my_books` (`id`, `book_name`, `author`, `subject`, `cover`, `owned_by`, `time`) VALUES
+(2, 'We have no Idea', 'Jorge Cham & Daniel Whiteson', 'Cosmology', 'covers/51hs9AkxHrL._SX325_BO1,204,203,200_.jpg', 1, '2019-07-06 18:43:04');
 
 -- --------------------------------------------------------
 
@@ -48,6 +71,13 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `time`) VALUES
 --
 
 --
+-- Indexes for table `my_books`
+--
+ALTER TABLE `my_books`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FOREIGN` (`owned_by`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -56,6 +86,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `my_books`
+--
+ALTER TABLE `my_books`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
