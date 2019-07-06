@@ -1,13 +1,10 @@
 <?php
 include 'php/needs/sess.php';
+include 'php/includes/header.php';
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Home</title>
-</head>
-<body>
-<h1>Home</h1>
+<div class="container">
+	
+	<h1>Home</h1>
+</div>
 </body>
 </html>
