@@ -29,6 +29,9 @@
     <div class="my-2 my-lg-0">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
+          <a class="nav-link" href="notifications.php">Notifications</a>
+        </li>
+        <li class="nav-item active">
           <a class="nav-link" href="logout.php">Logout</a>
         </li>
       </ul>

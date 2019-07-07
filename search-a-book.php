@@ -90,7 +90,9 @@ if(isset($_GET['search_by']) && isset($_GET['q'])){
 				if($_SESSION['user']['id'] == $row['id']){
 					?><li class='list-group-item'><a class='btn btn-success' href='php/book_request.php?to_user=<?php echo $row['owned_by'] ?>&book_id=<?php echo $row['id'] ?>&now_search=<?php echo $search ?>&now_search_by=<?php echo $search_by ?>' class='card-link'>Request this Book</a></li>
 					<?php
-				 }else{ echo "Its your Book"; }
+				 }else{ 
+				 	?><li class='list-group-item'><a class='btn btn-success' href='php/book_request.php?to_user=<?php echo $row['owned_by'] ?>&book_id=<?php echo $row['id'] ?>&now_search=<?php echo $search ?>&now_search_by=<?php echo $search_by ?>' class='card-link'>Request this Book</a></li>
+					<?php }
 
 				?>
 				
