@@ -25,7 +25,7 @@ if(isset($_GET['search_by']) && isset($_GET['q'])){
 			$author = "";
 			$subject = "selected";
 		}
-		$q = $db->query("SELECT * FROM my_books WHERE ". $search_by . " LIKE '". $search ."' ORDER BY id DESC");
+		$q = $db->query("SELECT * FROM my_books WHERE MATCH ($search_by) AGAINST ('$search') ORDER BY id DESC") or die(mysqli_error($db));
 		
 	}
 
@@ -84,8 +84,16 @@ if(isset($_GET['search_by']) && isset($_GET['q'])){
 			</ul>
 			<div class="card-body">
 				<ul class="list-group list-group-flush">
-				<li class="list-group-item"><a href="#" class="card-link">More books From same Owner</a></li>
-				<li class="list-group-item"><a href="#" class="card-link">Request this Book</a></li>
+				<li class="list-group-item"><a class="btn btn-success" href="more-books.php?u=<?php echo $row['owned_by'] ?>" class="card-link">More books From same Owner</a></li>
+				<?php
+
+				if($_SESSION['user']['id'] == $row['id']){
+					?><li class='list-group-item'><a class='btn btn-success' href='php/book_request.php?to_user=<?php echo $row['owned_by'] ?>&book_id=<?php echo $row['id'] ?>&now_search=<?php echo $search ?>&now_search_by=<?php echo $search_by ?>' class='card-link'>Request this Book</a></li>
+					<?php
+				 }else{ echo "Its your Book"; }
+
+				?>
+				
 			</ul>
 			</div>
 			<div class="card-footer text-muted">

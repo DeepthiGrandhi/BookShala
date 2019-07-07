@@ -23,7 +23,7 @@
         <a class="nav-link" href="search-a-book.php">Search a Book</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#">My Books</a>
+        <a class="nav-link" href="my-books.php">My Books</a>
       </li>
     </ul>
     <div class="my-2 my-lg-0">
