@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 06, 2019 at 09:49 PM
+-- Generation Time: Jul 07, 2019 at 01:03 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -21,6 +21,20 @@ SET time_zone = "+00:00";
 --
 -- Database: `bookshaala`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `accepted`
+--
+
+CREATE TABLE `accepted` (
+  `id` int(11) NOT NULL,
+  `from_id` int(11) NOT NULL,
+  `to_id` int(11) NOT NULL,
+  `book_id` int(11) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -48,6 +62,36 @@ INSERT INTO `my_books` (`id`, `book_name`, `author`, `subject`, `cover`, `owned_
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `notifications`
+--
+
+CREATE TABLE `notifications` (
+  `id` int(11) NOT NULL,
+  `to_user` int(11) NOT NULL,
+  `from_user` int(11) NOT NULL,
+  `book_id` int(11) NOT NULL,
+  `notif` text NOT NULL,
+  `status` text NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `requests`
+--
+
+CREATE TABLE `requests` (
+  `id` int(11) NOT NULL,
+  `to_user` int(11) NOT NULL,
+  `from_user` int(11) NOT NULL,
+  `book_id` int(11) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -71,11 +115,35 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `time`) VALUES
 --
 
 --
+-- Indexes for table `accepted`
+--
+ALTER TABLE `accepted`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FOREIGN` (`from_id`,`to_id`);
+
+--
 -- Indexes for table `my_books`
 --
 ALTER TABLE `my_books`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FOREIGN` (`owned_by`);
+ALTER TABLE `my_books` ADD FULLTEXT KEY `book_name` (`book_name`);
+ALTER TABLE `my_books` ADD FULLTEXT KEY `author` (`author`);
+ALTER TABLE `my_books` ADD FULLTEXT KEY `subject` (`subject`);
+
+--
+-- Indexes for table `notifications`
+--
+ALTER TABLE `notifications`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FOREIGN` (`to_user`,`from_user`);
+
+--
+-- Indexes for table `requests`
+--
+ALTER TABLE `requests`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FORIGEN` (`to_user`,`from_user`,`book_id`);
 
 --
 -- Indexes for table `users`
@@ -88,10 +156,28 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `accepted`
+--
+ALTER TABLE `accepted`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT for table `my_books`
 --
 ALTER TABLE `my_books`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `notifications`
+--
+ALTER TABLE `notifications`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `requests`
+--
+ALTER TABLE `requests`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `users`
